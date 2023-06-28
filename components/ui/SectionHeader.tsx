@@ -1,6 +1,6 @@
 interface Props {
   title?: string;
-  fontSize?: "Normal" | "Large";
+  fontSize?: "Normal" | "Large" | "Small";
   description?: string;
   alignment: "center" | "left";
   colorReverse?: boolean;
@@ -25,7 +25,16 @@ function Header(props: Props) {
                       ? "text-primary-content"
                       : "text-base-content"
                   }
-                  ${props.fontSize === "Normal" ? "lg:text-3xl" : "lg:text-4xl"}
+                  ${
+                    props.fontSize === "Normal"
+                      ? "lg:text-3xl"
+                      : props.fontSize === "Large"
+                        ? "lg:text-4xl"
+                        : "text-2xl"
+                  }
+                  ${
+                    props.alignment === 'left' ? 'font-bold' : ''
+                  }
                 `}
                 >
                   {props.title}
@@ -39,7 +48,13 @@ function Header(props: Props) {
                   ${
                     props.colorReverse ? "text-primary-content" : "text-neutral"
                   }
-                  ${props.fontSize === "Normal" ? "lg:text-xl" : "lg:text-2xl"}
+                  ${
+                    props.fontSize === "Normal"
+                      ? "lg:text-xl"
+                      : props.fontSize === "Large"
+                        ? "lg:text-2xl"
+                        : "text-base"
+                  }
                 `}
                 >
                   {props.description}

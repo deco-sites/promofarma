@@ -54,6 +54,7 @@ function BannerItem({ image, lcp }: { image: Banner; lcp?: boolean }) {
       href={action?.href ?? "#"}
       aria-label={action?.label}
       class="relative h-[600px] overflow-y-hidden w-full"
+      style={{ maxHeight: 355 }}
     >
       <Picture preload={lcp}>
         <Source

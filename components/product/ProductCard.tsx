@@ -89,7 +89,7 @@ function ProductCard({ product, preload, itemListName, layout }: Props) {
     <a
       href={url && relative(url)}
       aria-label="view product"
-      class="btn btn-block"
+      class="btn btn-block btn-success text-white"
     >
       {l?.basics?.ctaText || "Ver produto"}
     </a>
@@ -208,7 +208,6 @@ function ProductCard({ product, preload, itemListName, layout }: Props) {
               {skuSelector}
             </ul>
           )}
-          {l?.onMouseOver?.showCta && cta}
         </figcaption>
       </figure>
       {/* Prices & Name */}
@@ -305,6 +304,8 @@ function ProductCard({ product, preload, itemListName, layout }: Props) {
             </div>
           )
           : ""}
+
+          {cta}
       </div>
     </div>
   );

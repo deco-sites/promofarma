@@ -4,7 +4,6 @@ import type { Image as LiveImage } from "deco-sites/std/components/types.ts";
 import Icon from "$store/components/ui/Icon.tsx";
 import { useId } from "preact/hooks";
 import SliderJS from "$store/islands/SliderJS.tsx";
-import Header from "$store/components/ui/SectionHeader.tsx";
 
 export interface Category {
   tag?: string;
@@ -31,22 +30,15 @@ export interface Props {
 }
 
 function CardText(
-  { tag, label, description, alignment }: {
-    tag?: string;
+  { label }: {
     label?: string;
-    description?: string;
-    alignment?: "center" | "left";
   },
 ) {
   return (
     <div
-      class={`flex flex-col ${
-        alignment === "center" ? "text-center" : "text-left"
-      }`}
+      class={`flex flex-col`}
     >
-      {tag && <div class="text-sm text-primary">{tag}</div>}
       {label && <h3 class="text-lg text-base-content">{label}</h3>}
-      {description && <div class="text-sm text-neutral">{description}</div>}
     </div>
   );
 }
@@ -54,10 +46,6 @@ function CardText(
 function CategoryList(props: Props) {
   const id = `category-list-${useId()}`;
   const {
-    header = {
-      title: "",
-      description: "",
-    },
     list = [
       {
         tag: "10% off",
@@ -83,12 +71,6 @@ function CategoryList(props: Props) {
       id={id}
       class="container py-8 flex flex-col gap-8 lg:gap-10 text-base-content  lg:py-10"
     >
-      <Header
-        title={header.title}
-        description={header.description || ""}
-        alignment={layout.headerAlignment || "center"}
-      />
-
       <Slider class="carousel carousel-start gap-4 lg:gap-8 row-start-2 row-end-5">
         {list.map((
           { tag, label, description, href, image, buttonText },
@@ -100,39 +82,23 @@ function CategoryList(props: Props) {
           >
             <a
               href={href}
-              class="flex flex-col gap-4 lg:w-[280px] w-40 lg:h-auto"
+              class="flex flex-row-reverse items-center gap-4 lg:w-[280px] w-40 lg:h-auto"
             >
-              {layout.categoryCard?.textPosition === "top" &&
-                (
-                  <CardText
-                    tag={tag}
-                    label={label}
-                    description={description}
-                    alignment={layout?.categoryCard?.textAlignment}
-                  />
-                )}
+              {layout.categoryCard?.textPosition === "top" && <CardText label={label} />}
               {image &&
                 (
                   <figure>
                     <Image
-                      class="card w-full"
                       src={image}
                       alt={description || label || tag}
-                      width={160}
-                      height={195}
+                      width={55}
+                      height={55}
                       loading="lazy"
+                      style={{ borderRadius: 55 }}
                     />
                   </figure>
                 )}
-              {layout.categoryCard?.textPosition === "bottom" &&
-                (
-                  <CardText
-                    tag={tag}
-                    label={label}
-                    description={description}
-                    alignment={layout?.categoryCard?.textAlignment}
-                  />
-                )}
+              {layout.categoryCard?.textPosition === "bottom" && <CardText label={label} />}
             </a>
             {buttonText &&
               <a href={href} class="btn">{buttonText}</a>}
