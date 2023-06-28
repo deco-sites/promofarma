@@ -84,7 +84,9 @@ function CategoryList(props: Props) {
               href={href}
               class="flex flex-row-reverse items-center gap-4 lg:w-[280px] w-40 lg:h-auto"
             >
-              {layout.categoryCard?.textPosition === "top" && <CardText label={label} />}
+              {layout.categoryCard?.textPosition === "top" && (
+                <CardText label={label} />
+              )}
               {image &&
                 (
                   <figure>
@@ -98,7 +100,9 @@ function CategoryList(props: Props) {
                     />
                   </figure>
                 )}
-              {layout.categoryCard?.textPosition === "bottom" && <CardText label={label} />}
+              {layout.categoryCard?.textPosition === "bottom" && (
+                <CardText label={label} />
+              )}
             </a>
             {buttonText &&
               <a href={href} class="btn">{buttonText}</a>}

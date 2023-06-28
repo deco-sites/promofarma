@@ -29,12 +29,10 @@ function Header(props: Props) {
                     props.fontSize === "Normal"
                       ? "lg:text-3xl"
                       : props.fontSize === "Large"
-                        ? "lg:text-4xl"
-                        : "text-2xl"
+                      ? "lg:text-4xl"
+                      : "text-2xl"
                   }
-                  ${
-                    props.alignment === 'left' ? 'font-bold' : ''
-                  }
+                  ${props.alignment === "left" ? "font-bold" : ""}
                 `}
                 >
                   {props.title}
@@ -52,8 +50,8 @@ function Header(props: Props) {
                     props.fontSize === "Normal"
                       ? "lg:text-xl"
                       : props.fontSize === "Large"
-                        ? "lg:text-2xl"
-                        : "text-base"
+                      ? "lg:text-2xl"
+                      : "text-base"
                   }
                 `}
                 >

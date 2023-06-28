@@ -305,7 +305,7 @@ function ProductCard({ product, preload, itemListName, layout }: Props) {
           )
           : ""}
 
-          {cta}
+        {cta}
       </div>
     </div>
   );
